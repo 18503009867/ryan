@@ -1,0 +1,47 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+	     classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.13.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'spring-boot' 
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+	//compile('org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE')
+    compile("org.springframework.cloud:spring-cloud-cloudfoundry-service-broker:1.0.2.RELEASE")
+    testCompile(group: "org.springframework.cloud", name: "spring-cloud-cloudfoundry-service-broker", version: "1.0.2.RELEASE", classifier: "tests")
+}
+
+jar{
+    baseName = 'shoeslife-eureka'
+    version =  '1.0.0'
+    manifest {
+        attributes 'Main-Class': 'com.shoeslife.eureka.Application'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "src/main/docker"]
+        }
+    }
+}
+
