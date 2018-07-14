@@ -8,11 +8,11 @@ import com.github.pagehelper.PageInfo;
 import com.tnative.base.request.BasePage;
 import com.tnative.base.service.BaseService;
 
-public abstract class BaseController<T> {
+public abstract class BaseController<T,D extends BaseService<T>> {
 
-	private BaseService<T> baseService;
+	private D baseService;
 
-	public abstract void setBaseService(BaseService<T> baseService);
+	public abstract void setBaseService(D baseService);
 
 	// 添加单个对象
 	@RequestMapping(value="/insert",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)

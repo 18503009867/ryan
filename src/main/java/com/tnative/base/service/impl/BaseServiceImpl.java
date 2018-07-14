@@ -6,11 +6,11 @@ import com.tnative.base.dao.BaseMapper;
 import com.tnative.base.request.BasePage;
 import com.tnative.base.service.BaseService;
 
-public abstract class BaseServiceImpl<T> implements BaseService<T> {
+public abstract class BaseServiceImpl<T,D extends BaseMapper<T>> implements BaseService<T> {
 
-	protected BaseMapper<T> baseMapper;
+	protected D baseMapper;
 
-	protected abstract void setBaseMapper(BaseMapper<T> baseMapper);
+	protected abstract void setBaseMapper(D baseMapper);
 
 	@Override
 	public int insert(T entity) throws Exception {
