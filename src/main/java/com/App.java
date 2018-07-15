@@ -1,13 +1,14 @@
-package com.tnative;
+package com;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("com.test.dao")
 public class App {
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
-		//CATALINA_OPTS='-Djava.nio.channels.spi.SelectorProvider=sun.nio.ch.EPollSelectorProvider'
 	}
 }
